@@ -9,9 +9,10 @@ ehthumbs.db
 Thumbs.db
 
 !*.unitypackage
-!Assets/
 !.gitignore
 !/ProjectSettings/
 
 Assets/*
 !Assets/BSGTools/
+!LICENSE
+!README.md

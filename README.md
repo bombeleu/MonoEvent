@@ -1,7 +1,6 @@
 # README #
 
-MonoEvent
-=========
+## MonoEvent ##
 
 MonoEvent is a simple coroutine-based event system for [Unity](http://unity3d.com/) designed for programmers, by a programmer.
 
@@ -16,7 +15,7 @@ This was originally part of a larger project of random shit called BSGTools (Bir
 [BSGTools Unity Community Wiki Page](http://wiki.unity3d.com/index.php/BSGTools)
 
 ---
-## Legal Stuff ##
+### Legal Stuff ###
 
 If I have to clarify one thing, its this: I want the community to be able to contribute and modify what they like. I love the idea of open sourcing these sorts of things to help the community be better at what they do. However, I also want to make sure that I'm credited for all of the hard work I put into making these in the first place. That's why all of the code here will be licensed under the BSD 3-Clause License ([http://opensource.org/licenses/BSD-3-Clause](READ MORE ON THE LICENSE)). Basically, this means (from the previous link, edited for brevity):
 
@@ -30,24 +29,24 @@ Redistribution and use in source and binary forms, with or without modification,
 
 Pretty easy, right? Just don't edit the big comment at the top of each code file, or the LICENSE file located at the root of the repo. Maybe even find it in your heart to give me credit when distributing :). Otherwise, use it in your game, even if you're selling the game, I don't care.
 
-## Project Information ##
+### Project Information ###
 
-### Dependencies ###
+#### Dependencies ####
 
 None! InputMaster works in Unity Basic with no requirements or additional packages.
 
-### How do I use this in my game? ###
+#### How do I use this in my game? ###
 
 * Getting started is easy peasy, just run the **.unitypackage** file located at the root of the repository.
 
-### Where can I find tutorials? ###
+#### Where can I find tutorials? ####
 
 There are example scenes included with all BSGTools components, this one being no exception. There are also tutorials located at the bottom of the [BSGTools Unity Community Wiki Page](http://wiki.unity3d.com/index.php/BSGTools)!
 
-### Contribution guidelines ###
+#### Contribution guidelines ####
 
 * Nothing too crazy here, folks. I'll check anything that is added before it is merged into the master branch, but do whatever you want otherwise.
 
-### Who do I talk to? ###
+#### Who do I talk to? ####
 
 * Oh yeah, I'm Michael. You can contact me at [michaeln@birdstreetgames.com](mailto:michaeln@birdstreetgames.com)!

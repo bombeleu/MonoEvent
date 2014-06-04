@@ -32,21 +32,16 @@ Pretty easy, right? Just don't edit the big comment at the top of each code file
 ### Project Information ###
 
 #### Dependencies ####
-
 None! InputMaster works in Unity Basic with no requirements or additional packages.
 
 #### How do I use this in my game? ###
-
-* Getting started is easy peasy, just run the **.unitypackage** file located at the root of the repository.
+Getting started is easy peasy, just run the **.unitypackage** file located at the root of the repository.
 
 #### Where can I find tutorials? ####
-
 There are example scenes included with all BSGTools components, this one being no exception. There are also tutorials located at the bottom of the [BSGTools Unity Community Wiki Page](http://wiki.unity3d.com/index.php/BSGTools)!
 
 #### Contribution guidelines ####
-
-* Nothing too crazy here, folks. I'll check anything that is added before it is merged into the master branch, but do whatever you want otherwise.
+Nothing too crazy here, folks. I'll check anything that is added before it is merged into the master branch, but do whatever you want otherwise.
 
 #### Who do I talk to? ####
-
-* Oh yeah, I'm Michael. You can contact me at [michaeln@birdstreetgames.com](mailto:michaeln@birdstreetgames.com)!
+Oh yeah, I'm Michael. You can contact me at [michaeln@birdstreetgames.com](mailto:michaeln@birdstreetgames.com)!

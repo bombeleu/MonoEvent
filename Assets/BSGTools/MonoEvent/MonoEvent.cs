@@ -13,12 +13,13 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace BSGTools.Events {
-	public abstract class MonoEvent : MonoBehaviour {
+	public abstract partial class MonoEvent : MonoBehaviour {
 		#region Events & Delegates
 		public delegate void OnAnyEventStarted(MonoEvent me);
 		public static event OnAnyEventStarted AnyEventStarted;
@@ -59,9 +60,10 @@ namespace BSGTools.Events {
 		internal bool destroyOnComplete;
 
 		public EventStatus Status { get; private set; }
-		public bool DoingTask { get; private set; }
+		public bool DoingTask { get { return ActiveTasks > 0; } }
 
-		private bool isDelaying = false;
+		public int ActiveTasks { get; set; }
+
 		private List<IEnumerator> tasks = new List<IEnumerator>();
 
 		private static List<MonoEvent> registeredEvents = new List<MonoEvent>();
@@ -84,16 +86,16 @@ namespace BSGTools.Events {
 
 		private IEnumerator UpdateTask(IEnumerator task) {
 			bool hasInstruction = true;
-			DoingTask = true;
+			ActiveTasks++;
 			while(true) {
 				hasInstruction = task.MoveNext();
 
-				if(Status == EventStatus.Inactive || (hasInstruction == false && isDelaying == false))
+				if(Status == EventStatus.Inactive || (hasInstruction == false))
 					break;
 
 				yield return (task.Current is YieldInstruction) ? task.Current : null;
 			}
-			DoingTask = false;
+			ActiveTasks--;
 		}
 
 		void Update() {
@@ -121,9 +123,10 @@ namespace BSGTools.Events {
 		}
 
 		private void ResetEvent() {
-			StopAllCoroutines();
-			isDelaying = false;
-			DoingTask = false;
+			StopCoroutine(UpdateTask(null));
+			StopCoroutine(UpdateEvent());
+
+			ActiveTasks = 0;
 			tasks.Clear();
 			tasks.AddRange(InitEvent());
 		}
@@ -188,6 +191,7 @@ namespace BSGTools.Events {
 			if(Status != EventStatus.Active)
 				return;
 
+			StopAllCoroutines();
 			ResetEvent();
 
 			Status = EventStatus.Inactive;
@@ -242,11 +246,9 @@ namespace BSGTools.Events {
 		/// <param name="time">How long to delay before continuing</param>
 		/// <returns></returns>
 		internal IEnumerator Delay(float time) {
-			isDelaying = true;
 			float start = Time.unscaledTime;
 			while(Time.unscaledTime - start < time)
 				yield return null;
-			isDelaying = false;
 		}
 
 		/// <summary>
@@ -256,11 +258,21 @@ namespace BSGTools.Events {
 		/// <param name="time">How long to delay before continuing</param>
 		/// <returns></returns>
 		internal IEnumerator ScaledDelay(float time) {
-			isDelaying = true;
+			ActiveTasks++;
 			float start = Time.time;
 			while(Time.time - start < time)
 				yield return null;
-			isDelaying = false;
+			ActiveTasks--;
+		}
+
+		internal IEnumerator MainThread(Action a) {
+			yield return null;
+			a.Invoke();
+		}
+
+		internal IEnumerator NonBlock(IEnumerator ienum) {
+			StartCoroutine(ienum);
+			yield return null;
 		}
 
 		public enum EventStatus {

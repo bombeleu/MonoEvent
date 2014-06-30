@@ -241,8 +241,8 @@ namespace BSGTools {
 			/// <returns></returns>
 			internal IEnumerator Delay(float time) {
 				isDelaying = true;
-				float start = Time.realtimeSinceStartup;
-				while(Time.realtimeSinceStartup - start < time)
+				float start = Time.unscaledTime;
+				while(Time.unscaledTime - start < time)
 					yield return null;
 				isDelaying = false;
 			}

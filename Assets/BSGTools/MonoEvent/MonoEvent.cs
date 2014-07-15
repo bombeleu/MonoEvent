@@ -251,6 +251,21 @@ namespace BSGTools.Events {
 				yield return null;
 		}
 
+		public static T Create<T>(bool destroyOnComplete = true) where T : MonoEvent {
+			var parent = new GameObject(string.Format("[{0}] {1}", Guid.NewGuid().ToString(), typeof(T).Name));
+			var me = parent.AddComponent<T>();
+			me.destroyOnComplete = destroyOnComplete;
+			me.EventHalted += () => {
+				if(destroyOnComplete)
+					Destroy(parent);
+			};
+			me.EventCompleted += () => {
+				if(destroyOnComplete)
+					Destroy(parent);
+			};
+			return me;
+		}
+
 		/// <summary>
 		/// Provided for easy delays between events.
 		/// This delay is affected by timescale.

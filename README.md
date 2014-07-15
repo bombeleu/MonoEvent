@@ -32,7 +32,7 @@ Pretty easy, right? Just don't edit the big comment at the top of each code file
 ### Project Information ###
 
 #### Dependencies ####
-None! InputMaster works in Unity Basic with no requirements or additional packages.
+None! MonoEvent works in Unity Basic with no requirements or additional packages.
 
 #### How do I use this in my game? ###
 Getting started is easy peasy, just run the **.unitypackage** file located at the root of the repository.

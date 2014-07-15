@@ -4,7 +4,7 @@
 
 MonoEvent is a simple coroutine-based event system for [Unity](http://unity3d.com/) designed for programmers, by a programmer.
 
-**Latest Version: v1.0.0.0b**
+**Latest Version: v1.3.0**
 
 Versioning system "stolen" from ProCore (Major.Minor.Fixes):
 

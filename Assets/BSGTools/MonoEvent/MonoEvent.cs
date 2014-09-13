@@ -53,11 +53,11 @@ namespace BSGTools.Events {
 		#endregion
 
 		[SerializeField]
-		internal bool executeOnStart;
+		protected bool executeOnStart;
 		[SerializeField]
-		internal bool loop;
+		protected bool loop;
 		[SerializeField]
-		internal bool destroyOnComplete;
+		protected bool destroyOnComplete;
 
 		public EventStatus Status { get; private set; }
 		public bool DoingTask { get { return ActiveTasks > 0; } }

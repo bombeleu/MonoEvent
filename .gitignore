@@ -10,9 +10,8 @@ Thumbs.db
 
 !*.unitypackage
 !.gitignore
-!/ProjectSettings/
+!ProjectSettings/
 
-Assets/*
-!Assets/BSGTools/
+!Assets/
 !LICENSE
 !README.md

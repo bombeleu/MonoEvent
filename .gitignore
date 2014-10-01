@@ -1,4 +1,11 @@
+# ================================ #
+# An inverted .gitignore for Unity #
+# ================================ #
+
+# Ignore Everything By Default
 /*
+
+# OS generated
 .DS_Store
 .DS_Store?
 ._*
@@ -8,10 +15,10 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
+# What we want to keep (inverted)
 !*.unitypackage
 !.gitignore
 !ProjectSettings/
-
 !Assets/
 !LICENSE
 !README.md

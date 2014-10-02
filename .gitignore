@@ -15,6 +15,10 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
+# Plugins
+Assets/AssetStoreTools/
+Assets/UnityVS/
+
 # What we want to keep (inverted)
 !*.unitypackage
 !.gitignore

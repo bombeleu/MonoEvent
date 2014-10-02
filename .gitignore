@@ -18,6 +18,8 @@ Thumbs.db
 # Plugins
 Assets/AssetStoreTools/
 Assets/UnityVS/
+AssetStoreTools.meta
+UnityVS.meta
 
 # What we want to keep (inverted)
 !*.unitypackage

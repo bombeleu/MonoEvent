@@ -21,6 +21,10 @@ Assets/UnityVS/
 AssetStoreTools.meta
 UnityVS.meta
 
+# Generic Dont Commit
+Assets/NoCommit/
+NoCommit.meta
+
 # What we want to keep (inverted)
 !*.unitypackage
 !.gitignore
